@@ -11,6 +11,6 @@ last_pkg()
 	find "$_path" -name "$_pkg-*.zst" | sort | tail -n2 | head -n1
 }
 for x in $@; do
-	pkgs="$pkgs $(last-pkg "$x")"
+	pkgs="$pkgs $(last_pkg "$x")"
 done
 $_uninstall $pkgs
