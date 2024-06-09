@@ -1,0 +1,12 @@
+#!/bin/sh
+_pkg=$1
+_path=/var/cache/pacman/pkg
+_uninstall='sudo pacman -U'
+last_pkg()
+{
+	find "$_path" -name "$_pkg-*.zst" | sort | tail -n2 | head -n1
+}
+for x in $@; do
+	pkgs="$pkgs $(last-pkg "$x")"
+done
+$_uninstall $pkgs
